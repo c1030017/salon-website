@@ -1,0 +1,44 @@
+#hero-section {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Variant van hero-section zonder animatie voor andere pagina's */
+#hero-section:not(.home) {
+  background: linear-gradient(45deg, rgba(0, 204, 255, 0.233), rgba(255, 204, 0, 0.184), rgba(0, 255, 149, 0.304));
+  background-size: 400% 400%;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+
+/* Animatie voor de bewegende achtergrond */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+
+

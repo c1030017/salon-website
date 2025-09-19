@@ -1,0 +1,276 @@
+/* ========================= */
+/*       HERO SECTION        */
+/* ========================= */
+
+/* ========================= */
+/*       BLOEM ANIMATIE      */
+/* ========================= */
+/* Both flower images */
+#hero-section img {
+  max-width: 30vw;
+  height: auto;
+  position: absolute;
+  transition: opacity 1s ease-in-out, transform 2s ease-in-out;
+}
+
+/* Flower Closed */
+#flower-closed {
+  transform: translate(5%, 3%) rotate(-10deg); /* Adjust initial position of the closed flower */
+}
+
+/* Hide open flower initially */
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#flower-open {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Start in the center */
+  max-width: 30vw;
+  height: auto;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out, transform 2.5s ease-in-out;
+  z-index: 1;
+}
+
+/* Flower moves to bottom-right after blooming */
+#flower-open.move-to-corner {
+  transform: translate(25vw, -5vh) scale(0.75); /* Moves to lower right, slightly shrinks */
+  position: fixed;
+  z-index: 9999 ; /* 🔼 Zorgt dat bloem boven andere content ligt */
+}
+
+/* ========================= */
+/*       LOGO ANIMATIE       */
+/* ========================= */
+
+#cv-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.3); /* Start small */
+  max-width: 20vw;
+  opacity: 0;
+  z-index: 0;
+  transition: transform 2s ease-in-out, opacity 1s ease-in-out;
+}
+
+/* Show and grow CV-logo during flower movement */
+#cv-logo.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(0.55); /* Final size */
+}
+
+/* Glow effect */
+#cv-logo.glow {
+  animation: glowEffect 2s ease-in-out forwards;
+}
+
+/* Glow effect (fading in and out, with smooth transition of glow around the logo) */
+@keyframes glowEffect {
+  0% {
+    filter: drop-shadow(0 0 0px  rgba(45, 174, 101, 0.8)); /* Starting glow (no glow) */
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(45, 174, 101, 0.8)); /* Glow increases to its peak */
+  }
+  100% {
+    filter: drop-shadow(0 0 0px rgba(255, 255, 0, 0)); /* Glow gradually fades away */
+  }
+}
+
+
+#salon-logo {
+  position: absolute;
+  top: 50%;
+  left: 40%; /* Iets rechts van het midden */
+  transform: translate(0, -50%) scale(1.6);
+  max-width: 35vw; /* Maak groter indien gewenst */
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out, transform 1s ease-in-out;
+  z-index: 0;
+}
+
+#salon-logo.fade-in {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.6); /* Grotere schaal */
+}
+
+/* CV-logo moves to left */
+#cv-logo.move-left {
+  transform: translate(-115%, -50%) scale(0.55);
+  transition: transform 1.5s ease-in-out;
+}
+
+/* Algemene styling voor body en menu-items */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+/* Sticky Header */
+#sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+/* Logo */
+#logo-area img {
+  height: 40px;
+}
+
+
+
+/* ========================= */
+/*          SCROLL          */
+/* ========================= */
+
+
+
+.flower.flower-corner {
+  transform: translate( /* jouw eindpositie X,Y */ ) scale( /* jouw eindscale */ );
+  transition: transform 0.6s ease-in-out;
+}
+
+
+
+
+
+/* ========================= */
+/*     ABOUT & SPECIALS      */
+/* ========================= */
+
+
+#about-section {
+  background-color: rgba(255, 255, 255, 0.25);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 80px 0; /* 🆕 zorgt voor verticale ruimte */
+}
+
+
+#about-section .content-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px; /* top/bottom 60px, sides 20px */
+}
+
+
+#about-section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #ca5454;
+}
+
+#about-section p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}
+
+
+
+/* 📌 Achtergrond over hele pagina */
+#page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -100;
+  background: linear-gradient(45deg, rgba(0, 204, 255, 0.233), rgba(255, 204, 0, 0.184), rgba(0, 255, 149, 0.304));
+  background-size: 400% 400%;
+  animation: gradientMove 25s ease infinite;
+  pointer-events: none;
+}
+
+
+
+
+
+
+#specialties-section {
+  padding: 100px 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+#specialties-section .content-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#specialties-section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #ca5454;
+}
+
+.specialties-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.specialty-item {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 25px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(65, 160, 78, 0.486);
+}
+
+.specialty-item h3 {
+  margin-bottom: 10px;
+  color: #004d26;
+  font-size: 22px;
+}
+
+.specialty-item p {
+  font-size: 16px;
+  color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
