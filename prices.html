@@ -1,27 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prijzen</title>
+
+  <title>Prijslijst</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/reset.css" />
-<link rel="stylesheet" href="css/variables.css" />
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/components.css" />
-<link rel="stylesheet" href="css/prices.css" />
-
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/prices.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-<div class="logo-container">
-  <img id="cv-logo" class="static-logo" src="assets/images/logo-cv.png" alt="CV Logo" />
-  <img id="salon-logo" class="static-logo" src="assets/images/logo-salon.png" alt="Salon Logo" />
-</div>
 
+<body class="static-header-always">
+  <!-- Hero / pagina-titel -->
   <div id="hero-section">
     <h1>Prijslijst</h1>
   </div>
 
-  <script type="module" src="js/main.js"></script>
+  <!-- Prices Section -->
+  <main class="prices-page">
+    <!-- Toolbar (filters/search optioneel) -->
+    <div class="prices-toolbar"></div>
 
+    <!-- Masonry grid -->
+    <section id="masonry" class="masonry"></section>
+  </main>
+
+<!-- Modal (dit moet 1 geheel zijn) -->
+<div id="price-modal" class="price-modal" aria-hidden="true">
+  <div class="price-modal__backdrop" data-close></div>
+
+  <div class="price-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="price-modal__close" aria-label="Sluiten" data-close>&times;</button>
+
+    <div class="price-modal__content">
+      <!-- Linker kolom: afbeelding -->
+      <img id="modal-image" alt="" />
+
+      <!-- Rechter kolom: tekst -->
+      <div class="price-modal__text">
+        <h3 id="modal-title"></h3>
+
+        <!-- Categorie direct onder titel -->
+        <div id="modal-category" class="chip chip--modal price-modal__category"></div>
+
+        <!-- Beschrijving -->
+        <p id="modal-desc"></p>
+
+        <!-- Prijs & duur met icoontjes naast elkaar -->
+        <div class="price-modal__row">
+          <div class="meta-item">
+            <i class="fa-solid fa-money-bills" aria-hidden="true"></i>
+            <span id="modal-price" class="price"></span>
+          </div>
+          <div class="meta-item">
+            <i class="fa-regular fa-clock" aria-hidden="true"></i>
+            <span id="modal-duration" class="duration"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  <!-- Footer include -->
+  <div w3-include-html="sections/footer.html"></div>
+
+  <!-- JS: w3 include + init -->
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+  <script>
+    // Laad de footer.html in en zet daarna het jaartal
+    w3.includeHTML(function () {
+      const year = document.getElementById('current-year');
+      if (year) year.textContent = new Date().getFullYear();
+    });
+  </script>
+
+  <!-- JS: je sitecode -->
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/prices.js"></script>
 </body>
 </html>

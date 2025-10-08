@@ -13,6 +13,13 @@
   transition: opacity 1s ease-in-out, transform 2s ease-in-out;
 }
 
+@media (max-width: 600px) {
+  #hero-section > #cv-logo,
+  #hero-section > #salon-logo {
+    max-width: 47vw;
+  }
+}
+
 /* Flower Closed */
 #flower-closed {
   transform: translate(5%, 3%) rotate(-10deg); /* Adjust initial position of the closed flower */
@@ -37,11 +44,27 @@
 }
 
 /* Flower moves to bottom-right after blooming */
-#flower-open.move-to-corner {
-  transform: translate(25vw, -5vh) scale(0.75); /* Moves to lower right, slightly shrinks */
+/* Flower moves to bottom-right after blooming */
+#flower-open.move-to-corner,
+#flower-open.flower-fixed {
   position: fixed;
-  z-index: 9999 ; /* 🔼 Zorgt dat bloem boven andere content ligt */
+  transform: translate(26vw, 10vh) scale(0.6)!important;
+  /* zet ‘m echt in de hoek i.p.v. translate */
+  opacity: 1;
+  z-index: 9999; /* boven content */
+  pointer-events: none; /* optioneel: niet klikbaar */
 }
+
+/* Mobile */
+@media (max-width: 640px) {
+  #flower-open.move-to-corner,
+  #flower-open.flower-fixed {
+    transform: translate(17vw, 35vh) !important;
+    bottom: 10px;
+    right: 100px;  /* iets kleiner op mobiel */
+  }
+}
+
 
 /* ========================= */
 /*       LOGO ANIMATIE       */

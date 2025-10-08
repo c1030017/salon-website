@@ -1,27 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>Contact</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/reset.css" />
-<link rel="stylesheet" href="css/variables.css" />
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/components.css" />
-<link rel="stylesheet" href="css/contact.css" />
-
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/contact.css" />
 </head>
-<body>
-<div class="logo-container">
-  <img id="cv-logo" class="static-logo" src="assets/images/logo-cv.png" alt="CV Logo" />
-  <img id="salon-logo" class="static-logo" src="assets/images/logo-salon.png" alt="Salon Logo" />
-</div>
-  <div id="hero-section">
-    <h1>Contact ons</h1>
-  </div>
 
+<body class="static-header-always">
 
+  <!-- Contact Sectie -->
+  <main class="contact-page">
+    <section class="contact-card">
+      <div class="contact-left">
+        <h2>Neem contact op</h2>
+        <p>
+          Heb je een vraag? Stuur ons gerust een bericht en we reageren zo snel mogelijk.<br>
+          <strong>Let op:</strong> afspraken kunnen uitsluitend telefonisch worden gemaakt.<br>
+          Daarnaast vragen wij <strong>50% vooruitbetaling</strong> bij het maken van de afspraak 
+          en <strong>50% op de dag van de behandeling</strong>.
+        </p>
+
+        <ul class="contact-info">
+          <li><i class="fa-solid fa-location-dot"></i> Rubensplein 11c, 3117 BJ Schiedam</li>
+          <li><i class="fa-solid fa-phone"></i> +31 (6) 40 83 10 66</li>
+          <li><i class="fa-solid fa-envelope"></i> Cvbeautybrasil@hotmail.com</li>
+        </ul>
+
+        <div class="contact-socials">
+          <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" class="icon-btn"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/"  target="_blank" aria-label="Facebook"  class="icon-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://wa.me/"              target="_blank" aria-label="WhatsApp" class="icon-btn"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="contact-right">
+        <!-- LET OP: geen action/method nodig met EmailJS -->
+        <form id="contact-form" class="form" novalidate>
+          <!-- Honeypot tegen spam -->
+          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" style="display:none">
+
+          <div class="field">
+            <label for="name">Naam</label>
+            <input type="text" id="name" name="name" placeholder="Jouw naam" required>
+            <small class="error" data-for="name"></small>
+          </div>
+
+          <div class="field">
+            <label for="email">E-mailadres</label>
+            <input type="email" id="email" name="email" placeholder="jij@voorbeeld.nl" required>
+            <small class="error" data-for="email"></small>
+          </div>
+
+          <div class="field">
+            <label for="message">Bericht</label>
+            <textarea id="message" name="message" rows="6" placeholder="Schrijf hier je bericht..." required></textarea>
+            <small class="error" data-for="message"></small>
+          </div>
+
+          <div class="consent">
+            <label>
+              <input type="checkbox" id="consent" required>
+              Ik ga akkoord dat mijn gegevens worden gebruikt om mijn bericht te beantwoorden.
+            </label>
+            <small class="error" data-for="consent"></small>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <i class="fa-regular fa-paper-plane"></i> Verzenden
+          </button>
+
+          <p class="form-note">Lievere mailen? <a href="mailto:Cvbeautybrasil@hotmail.com">Cvbeautybrasil@hotmail.com</a></p>
+
+          <!-- Feedback -->
+          <div id="form-status" class="form-status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer include -->
+  <div w3-include-html="sections/footer.html"></div>
+
+  <!-- JS: w3 include + init -->
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+  <script>
+    w3.includeHTML(function () {
+      const year = document.getElementById('current-year');
+      if (year) year.textContent = new Date().getFullYear();
+    });
+  </script>
+
+  <!-- JS: header e.d. -->
   <script type="module" src="js/main.js"></script>
 
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    // TODO: zet hier je EmailJS PUBLIC KEY
+    emailjs.init("T2PN-8NRhwc2QIqcE");
+  </script>
+
+  <!-- Contact: EmailJS submit-handler met dubbele verzending (naar dev + eigenaar) -->
+  <script>
+    (function () {
+      const form     = document.getElementById('contact-form');
+      const statusEl = document.getElementById('form-status');
+
+      const SERVICE_ID  = "service_galzr7r";
+      const TEMPLATE_ID = "template_0cuwevf";
+      const OWNER_EMAIL = "Cvbeautybrasil@hotmail.com";
+
+      function setStatus(msg, ok = true) {
+        if (!statusEl) return;
+        statusEl.textContent = msg;
+        statusEl.className = 'form-status ' + (ok ? 'ok' : 'err');
+      }
+
+      function validate() {
+        let ok = true;
+        const rules = [
+          { id: 'name',    test: v => v.trim().length >= 2,                msg: 'Vul je naam in.' },
+          { id: 'email',   test: v => /^\S+@\S+\.\S+$/.test(v),            msg: 'Vul een geldig e-mailadres in.' },
+          { id: 'message', test: v => v.trim().length >= 10,               msg: 'Je bericht is te kort.' },
+          { id: 'consent', test: () => document.getElementById('consent').checked, msg: 'Vink het vakje aan om door te gaan.' },
+        ];
+        rules.forEach(r => {
+          const el  = document.getElementById(r.id);
+          const err = document.querySelector(`.error[data-for="${r.id}"]`);
+          const val = (el?.type === 'checkbox') ? el.checked : (el?.value || '');
+          const pass = r.test(String(val));
+          if (!pass) {
+            ok = false;
+            el?.classList.add('invalid');
+            if (err) err.textContent = r.msg;
+          } else {
+            el?.classList.remove('invalid');
+            if (err) err.textContent = '';
+          }
+        });
+        return ok;
+      }
+
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        setStatus('');
+        if (!validate()) return;
+
+        // Honeypot
+        const hp = form.querySelector('input.hp');
+        if (hp && hp.value) {
+          setStatus('Spam gedetecteerd.', false);
+          return;
+        }
+
+        // Form values
+        const name    = document.getElementById('name').value.trim();
+        const email   = document.getElementById('email').value.trim(); // klant
+        const message = document.getElementById('message').value.trim();
+
+        const baseParams = {
+          name,
+          email,
+          message,
+          reply_to: email  // reply gaat naar de klant
+        };
+
+        try {
+          // 2) Stuur naar eigenaar (je moeder)
+          await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+            ...baseParams,
+            to_email: OWNER_EMAIL
+          });
+
+          form.reset();
+          setStatus('Bedankt! Je bericht is verstuurd. 🎉', true);
+        } catch (err) {
+          console.error(err);
+          setStatus('Er ging iets mis bij het versturen. Probeer het later opnieuw.', false);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

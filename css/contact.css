@@ -1,4 +1,140 @@
-/* =========================== */
-/*     CONTACT PAGINA STIJL     */
-/* =========================== */
+main.contact-page {
+    padding-top: 140px;
+  }
+  
 
+.static-header-always .static-header {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition: none; 
+  }
+
+.contact-page {
+    padding: min(5vw, 48px) min(5vw, 48px) 80px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .contact-card {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr; 
+    gap: clamp(18px, 3vw, 28px);
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.6);
+    border-radius: 18px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+    overflow: hidden;
+    backdrop-filter: blur(4px) saturate(110%);
+  }
+  
+  /* Kolommen */
+  .contact-left, .contact-right {
+    padding: clamp(18px, 3vw, 28px);
+  }
+  
+  /* Titels & tekst */
+  .contact-left h2 {
+    font-size: clamp(20px, 2.2vw, 26px);
+    margin: 0 0 6px;
+  }
+  .contact-left p {
+    color: #31453b;
+    line-height: 1.55;
+    margin: 0 0 16px;
+  }
+  
+  /* Info lijst */
+  .contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: grid;
+    gap: 10px;
+  }
+  .contact-info li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: #0f1a15;
+  }
+  .contact-info i { opacity: 0.85; margin-top: 3px; }
+  
+  /* Socials */
+  .contact-socials { display: flex; gap: 10px; margin-top: 8px; }
+  .icon-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px; border-radius: 10px;
+    background: rgba(0,0,0,0.08);
+    color: #0f1a15; text-decoration: none;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    transition: transform .2s ease, background .25s ease, box-shadow .25s ease;
+  }
+  .icon-btn:hover { transform: translateY(-2px); background: rgba(0,0,0,0.14); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+  
+  /* Formulier */
+  .form { display: grid; gap: 14px; }
+  .hp { position: absolute; left: -10000px; opacity: 0; }
+  
+  .field label {
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: #fff;
+    font: inherit;
+    color: #0f1a15;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+    box-sizing: border-box;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    border-color: rgba(25,135,84,0.7);
+    box-shadow: 0 0 0 4px rgba(25,135,84,0.12);
+  }
+  .field .error {
+    display: block;
+    color: #b33a3a;
+    font-size: 12px;
+    min-height: 14px;
+    margin-top: 4px;
+  }
+  .invalid { border-color: #d06; }
+  
+  .consent label {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 14px; color: #0f1a15;
+  }
+  .consent input[type="checkbox"] { transform: translateY(2px); }
+  
+  .btn-submit {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgb(25, 135, 84);
+    color: #fff; border: 0; border-radius: 12px;
+    padding: 12px 16px; cursor: pointer; font-weight: 700;
+    box-shadow: 0 6px 16px rgba(25,135,84,0.25);
+    transition: transform .15s ease, box-shadow .2s ease, opacity .2s ease;
+  }
+  .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(25,135,84,0.35); }
+  .btn-submit:active { transform: translateY(0); opacity: .95; }
+  
+  /* Statusmeldingen */
+  .form-status { margin-top: 6px; font-size: 14px; }
+  .form-status.ok  { color: #1e7f4e; }
+  .form-status.err { color: #b33a3a; }
+  
+  /* Responsive */
+  @media (max-width: 900px) {
+    .contact-card { grid-template-columns: 1fr; }
+  }
+  

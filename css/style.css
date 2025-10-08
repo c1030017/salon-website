@@ -1,9 +1,34 @@
+/* =========================
+   Basis & achtergrond
+   ========================= */
+html, body {
+  font-family: 'Poppins', Arial, sans-serif;
+  min-height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(0, 204, 255, 0.233),
+    rgba(255, 204, 0, 0.184),
+    rgba(0, 255, 149, 0.304)
+  );
+  background-attachment: fixed; /* zorgt dat de gradient meescrolt */
+  background-size: cover;
+}
+
+/* Algemene styling voor body en menu-items (laat staan als je ‘m gebruikt) */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   Hero
+   ========================= */
 #hero-section {
   position: relative;
   top: 0;
   left: 0;
-  z-index: -1;
-  height: 100vh;
+  /* z-index: -1;  <-- kan verspring-issues geven; liever weghalen */
+  height: 100vh;  
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -24,133 +49,99 @@
   position: relative;
 }
 
-
 /* Animatie voor de bewegende achtergrond */
 @keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   Hero images (bloem + logos)
+   ========================= */
+   #hero-section img {
+    max-width: 30vw;
+    height: auto;
+    position: absolute;
+    transition: opacity 1s ease-in-out, transform 2s ease-in-out;
   }
-  50% {
-    background-position: 100% 50%;
+  
+  /* Flower Closed */
+  #flower-closed {
+    transform: translate(5%, 3%) rotate(-10deg);
   }
-  100% {
-    background-position: 0% 50%;
+  
+  /* Hide open flower initially */
+  .hidden {
+    opacity: 0;
+    pointer-events: none;
   }
-}
-
-
-
-
-
-
-
-
-/* Both flower images */
-#hero-section img {
-  max-width: 30vw;
-  height: auto;
-  position: absolute;
-  transition: opacity 1s ease-in-out, transform 2s ease-in-out;
-}
-
-/* Flower Closed */
-#flower-closed {
-  transform: translate(5%, 3%) rotate(-10deg); /* Adjust initial position of the closed flower */
-}
-
-/* Hide open flower initially */
-.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-#flower-open {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Start in the center */
-  max-width: 30vw;
-  height: auto;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out, transform 2.5s ease-in-out;
-  z-index: 1;
-}
-
-/* Flower moves to bottom-right after blooming */
-#flower-open.move-to-corner {
-  transform: translate(25vw, -5vh) scale(0.75); /* Moves to lower right, slightly shrinks */
-}
-
-
-
-
-
-/* CV-logo: initial position */
-#cv-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.3); /* Start small */
-  max-width: 20vw;
-  opacity: 0;
-  z-index: 0;
-  transition: transform 2s ease-in-out, opacity 1s ease-in-out;
-}
-
-/* Show and grow CV-logo during flower movement */
-#cv-logo.show {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(0.55); /* Final size */
-}
-
-/* Glow effect */
-#cv-logo.glow {
-  animation: glowEffect 2s ease-in-out forwards;
-}
-
-/* Glow effect (fading in and out, with smooth transition of glow around the logo) */
-@keyframes glowEffect {
-  0% {
-    filter: drop-shadow(0 0 0px  rgba(45, 174, 101, 0.8)); /* Starting glow (no glow) */
+  
+  /* ====== LOGO ANIMATIE ====== */
+  /* Startposities: midden. We animeren top/left/transform én opacity */
+  #cv-logo,
+  #salon-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    opacity: 0;
+    transform: translateY(-40px); /* iets boven beeld */
+    transition: opacity 600ms ease, transform 600ms ease;
   }
-  50% {
-    filter: drop-shadow(0 0 10px rgba(45, 174, 101, 0.8)); /* Glow increases to its peak */
-  }
-  100% {
-    filter: drop-shadow(0 0 0px rgba(255, 255, 0, 0)); /* Glow gradually fades away */
-  }
-}
 
-
+  /* CV start (midden) */
+  #cv-logo {
+    transform: translate(-50%, -50%) scale(0.55);
+    max-width: 20vw;
+    opacity: 1;
+  }
+  
+  /* Salon start (iets rechts van midden) */
 #salon-logo {
-  position: absolute;
-  top: 50%;
-  left: 40%; /* Iets rechts van het midden */
-  transform: translate(0, -50%) scale(1.6);
-  max-width: 35vw; /* Maak groter indien gewenst */
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out, transform 1s ease-in-out;
-  z-index: 0;
+  left: 80px;
 }
-
-#salon-logo.fade-in {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.6); /* Grotere schaal */
-}
-
-/* CV-logo moves to left */
-#cv-logo.move-left {
-  transform: translate(-115%, -50%) scale(0.55);
-  transition: transform 1.5s ease-in-out;
-}
-
-/* Algemene styling voor body en menu-items */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-/* Sticky Header */
+  /* Extra states die je al had (optioneel) */
+  #cv-logo.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.55);
+  }
+  
+  #cv-logo.glow {
+    animation: glowEffect 2s ease-in-out forwards;
+  } 
+  
+  @keyframes glowEffect {
+    0%   { filter: drop-shadow(0 0 0px rgba(45,174,101,0.8)); }
+    50%  { filter: drop-shadow(0 0 10px rgba(45,174,101,0.8)); }
+    100% { filter: drop-shadow(0 0 0px rgba(255,255,0,0)); }
+  }
+  
+  #salon-logo.fade-in {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  
+  /* ===== Scroll-doel: linksboven met vaste marges (animatie via top/left) ===== */
+  #cv-logo.scroll-shift,
+  #salon-logo.scroll-shift {
+    opacity: 1;
+    transform: translateY(0); /* schuift naar beneden op plek */
+  }
+  
+  /* Optioneel: snellere terug-animatie */
+  #cv-logo.returning,
+  #salon-logo.returning {
+    transition-duration: 500ms;
+  }
+  
+  /* ==== Fade helpers voor richting ==== */
+  #hero-section .pre-fade { opacity: 0; }   /* vlak voor omlaag bewegen */
+  #hero-section .fade-in  { opacity: 1; }   /* tijdens omlaag bewegen */
+  #hero-section .fade-out { opacity: 0; }   /* tijdens omhoog bewegen */
+  
+/* =========================
+   Sticky header (als gebruikt)
+   ========================= */
 #sticky-header {
   position: fixed;
   top: 0;
@@ -166,20 +157,11 @@ body {
   transition: background-color 0.3s ease;
 }
 
-/* Logo */
-#logo-area img {
-  height: 40px;
-}
+#logo-area img { height: 40px; }
 
-
-
-
-
-
-
-
-
-/* MENU ICON rechtsboven */
+/* =========================
+   Menu / Slideout
+   ========================= */
 #menu-icon {
   position: fixed;
   top: 20px;
@@ -196,7 +178,6 @@ body {
   border: none;
 }
 
-/* Hamburger strepen */
 #menu-icon .bars div {
   width: 25px;
   height: 3px;
@@ -204,41 +185,38 @@ body {
   margin: 3px 0;
   border-radius: 2px;
 }
-
-/* UITKLAP MENU */
+/* Slideout menu – laat hoogte meegroeien met de content */
 #slideout-menu {
   position: fixed;
   top: 0;
-  right: -300px;
-  width: 130px;
-  height: 23vh;
+  right: -180px;
+  height: auto;            
+  max-height: calc(100vh - 16px);
+  overflow: auto;           
   background-color: rgba(84, 131, 91, 0.664);
   box-shadow: -4px 0 10px rgba(158, 22, 22, 0.3);
   transition: right 0.4s ease;
   z-index: 999;
   display: flex;
   flex-direction: column;
-  border-radius: 20px 0 0 20px; /* Alleen linkerzijde afronden */
-
-  /* 🔧 aangepaste padding (alleen boven/onder) */
-  padding: 40px 0;
+  border-radius: 20px 0 0 20px;
+  padding: calc(40px + env(safe-area-inset-top,0px)) 0 16px; /* veilige top marge */
 }
 
-
-/* Laat menu zien op hover van icon of blok */
+/* Hover gedrag blijft hetzelfde */
 #menu-icon:hover + #slideout-menu,
 #slideout-menu:hover {
   right: 0;
 }
 
-/* MENU ITEMS */
+/* Lijst styling – geen extra buitenmarge nodig, menu heeft al padding */
 #slideout-menu ul {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 12px 0 0 0;  /* compacter, of 0 als je wilt */
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 #slideout-menu li a {
@@ -246,52 +224,40 @@ body {
   width: 100%;
   text-decoration: none;
   font-size: 20px;
-  color: rgb(255, 255, 255);
+  color: #fff;
   transition: background-color 0.3s ease, color 0.3s ease;
   padding: 12px 0;
-  text-align: center; /* <--- voeg dit toe */
+  text-align: center;
 }
-
 
 #slideout-menu li a:hover {
   color: #c84040;
   font-weight: bold;
 }
 
-#slideout-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 50px 0 0 0; /* << HIER extra ruimte boven de lijst */
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 #slideout-menu li a.active {
-  background-color: rgba(255, 255, 255, 0.3); /* Hele achtergrond */
+  background-color: rgba(255,255,255,0.3);
   color: rgb(225, 35, 35);
   font-weight: bold;
 }
 
 
-
-
-
+/* =========================
+   About / Sections (optioneel)
+   ========================= */
 #about-section {
   background-color: rgba(255, 255, 255, 0.25);
   position: relative;
   z-index: 1;
   text-align: center;
-  padding: 80px 0; /* 🆕 zorgt voor verticale ruimte */
+  padding: 80px 0;
 }
-
 
 #about-section .content-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 60px 20px; /* top/bottom 60px, sides 20px */
+  padding: 60px 20px;
 }
-
 
 #about-section h2 {
   font-size: 32px;
@@ -305,15 +271,8 @@ body {
   color: #333;
 }
 
-
-
-
-
-
-
-
 /* 📌 Achtergrond over hele pagina */
-#page-background {
+.page-background {
   position: fixed;
   top: 0;
   left: 0;
@@ -326,11 +285,7 @@ body {
   pointer-events: none;
 }
 
-
-
-
-
-
+/* Specialties (optioneel) */
 #specialties-section {
   padding: 100px 20px;
   background-color: rgba(255, 255, 255, 0.1);
@@ -374,121 +329,3 @@ body {
   font-size: 16px;
   color: #333;
 }
-
-
-
-
-#footer {
-  background-color:rgba(84, 131, 91, 0.664);
-  color: white;
-  padding: 20px 20px 20px;
-  font-family: 'Poppins', sans-serif;
-  position: relative;
-}
-
-.footer-container {
-  max-width: 1700px;
-  margin: 0 auto;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Logo + slogan */
-.footer-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px; /* ruimte tussen logo en slogan */
-  margin-bottom: 25px;
-  text-align: center;
-  flex-wrap: nowrap;
-}
-
-.footer-logo {
-  width: 40px;
-  height: auto;
-  display: inline-block;
-}
-
-.footer-slogan {
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: rgb(136, 69, 69);
-  margin: 0;
-}
-
-
-/* Navigatie */
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #c41414;
-}
-
-/* Onderkant: copyright center + icons rechtsonder */
-.footer-bottom {
-  width: 100%;
-  text-align: center;
-  position: relative;
-}
-
-.footer-copy {
-  font-size: 13px;
-  opacity: 0.7;
-  margin-bottom: 10px;
-}
-
-/* Icons rechtsonderin */
-.footer-socials {
-  position: absolute;
-  right: 20px;
-  bottom: 0;
-  display: flex;
-  gap: 15px;
-  font-size: 22px;
-}
-
-.footer-socials a {
-  color: white;
-  transition: color 0.3s ease;
-}
-
-.footer-socials a:hover {
-  color: #b32b2b;
-}
-
-/* Mobiel responsief */
-@media (max-width: 768px) {
-  .footer-header {
-    flex-direction: column;
-  }
-
-  .footer-links {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .footer-socials {
-    position: static;
-    justify-content: center;
-    margin-top: 20px;
-  }
-}
-
-
-

@@ -1,6 +1,7 @@
-const flower = document.getElementById("flower-open");
-const cvLogo = document.getElementById("cv-logo");
-const salonLogo = document.getElementById("salon-logo");
+const flower     = document.getElementById("flower-open");
+const cvLogo     = document.querySelector('#hero-section #cv-logo');
+const salonLogo  = document.querySelector('#hero-section #salon-logo');
+const staticHdr  = document.querySelector('.static-header');
 
 let logoShifted = false;
 
@@ -8,41 +9,39 @@ window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
 
   // === Scroll naar beneden ===
-  if (scrollY > 50 && !logoShifted) {
+  if (scrollY > 100 && !logoShifted) {
     logoShifted = true;
 
-    // Bloem naar eindpositie schuiven (indien nog niet daar)
+    // 1) Static header zichtbaar maken (fade-in from top)
+    if (staticHdr) staticHdr.classList.add('visible');
+
+    // 2) Hero-logo's wegfaden zodat je geen dubbele ziet
+    [cvLogo, salonLogo].forEach(el => {
+      if (!el) return;
+      el.classList.add('animated-hidden');
+    });
+
+    // 3) Bloem naar eindpositie schuiven (niet terughalen)
     if (flower && !flower.classList.contains("flower-fixed")) {
       flower.classList.add("flower-fixed");
-      flower.classList.remove("move-to-corner", "fade-in");
+      // Niet verwijderen: anders springt hij terug.
+      // flower.classList.remove("move-to-corner", "fade-in");
     }
-
-    // Logo's naar hoek
-    if (cvLogo) cvLogo.classList.add("scroll-shift");
-    if (salonLogo) salonLogo.classList.add("scroll-shift");
   }
 
   // === Scroll terug naar boven ===
   if (scrollY <= 50 && logoShifted) {
     logoShifted = false;
 
-    // Logo's terug naar animatie-eindpositie
-    if (cvLogo) {
-      cvLogo.classList.add("returning");
-      cvLogo.classList.remove("scroll-shift");
-      setTimeout(() => {
-        cvLogo.classList.remove("returning");
-      }, 800);
-    }
+    // 1) Static header verbergen (fade-out naar boven)
+    if (staticHdr) staticHdr.classList.remove('visible');
 
-    if (salonLogo) {
-      salonLogo.classList.add("returning");
-      salonLogo.classList.remove("scroll-shift");
-      setTimeout(() => {
-        salonLogo.classList.remove("returning");
-      }, 800);
-    }
+    // 2) Hero-logo's weer tonen
+    [cvLogo, salonLogo].forEach(el => {
+      if (!el) return;
+      el.classList.remove('animated-hidden');
+    });
 
-    // Bloem blijft op eindpositie
+    // 3) Bloem blijft op eindpositie (niets doen)
   }
 });

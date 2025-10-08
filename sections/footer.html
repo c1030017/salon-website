@@ -1,34 +1,62 @@
 <section id="footer">
   <div class="footer-container">
 
-    <!-- Logo + Slogan (naast elkaar in center) -->
-    
-    <!-- Navigatiebalk -->
-    <div class="footer-links">
-      <a href="../index.html">Home</a>
-      <a href="../prices.html">Prijzen</a>
-      <a href="../contact.html">Contact</a>
+    <div class="footer-layout">
+      <!-- LINKER KOLOM: Pagina’s + Socials (onder elkaar) -->
+      <div class="footer-left">
+        <div class="footer-col">
+          <h4 class="footer-title">Pagina’s</h4>
+          <nav class="footer-links">
+            <a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
+            <a href="prices.html"><i class="fa-solid fa-tags"></i><span>Prijzen</span></a>
+            <a href="contact.html"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
+          </nav>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Socials</h4>
+          <div class="footer-socials-row">
+            <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" class="icon-btn">
+              <i class="fab fa-instagram fab-footer"></i>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" class="icon-btn">
+              <i class="fab fa-facebook-f fab-footer"></i>
+            </a>
+            <a href="https://wa.me/" target="_blank" aria-label="WhatsApp" class="icon-btn">
+              <i class="fab fa-whatsapp fab-footer"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECHTER KOLOM: Kaart -->
+      <div class="footer-right">
+        <div class="footer-col footer-map">
+          <h4 class="footer-title">Hier vind je ons</h4>
+          <div class="map-wrap">
+            <iframe
+              title="Locatie op Google Maps"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+             src="https://www.google.com/maps?q=51.9116587,4.3829833&hl=nl&z=15&output=embed"> <!--  z in de src is zoom level -->
+            </iframe>
+          </div>
+          <address class="footer-address">
+            Rubensplein 11c, 3117 BJ Schiedam
+          </address>
+        </div>
+      </div>
     </div>
 
-    <!-- Copyright center + social icons rechts onderin -->
     <div class="footer-bottom">
       <p class="footer-copy">
         &copy; <span id="current-year"></span> CV Beauty Brasil. Alle rechten voorbehouden.
       </p>
-      <div class="footer-socials">
-        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-      </div>
     </div>
 
   </div>
 </section>
 
-<!-- Automatisch jaartal -->
 <script>
   document.getElementById("current-year").textContent = new Date().getFullYear();
 </script>
