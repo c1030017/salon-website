@@ -1,41 +1,41 @@
 // js/prices.js
 
 const data = [
-    { id: 1,  title: "Ontspanningsmassage",     category: "Massage",     price: "€75/uur",  duration: "45 min", image: "./assets/images/prices/backmassage.jpg",     desc: "Heerlijk ontspannen of juistklachtgericht. Keuze uit rug, nek, schouders of full body."},
-    { id: 2,  title: "Head Spa",           category: "Speciale Behandelingen",     price: "€80/uur",  duration: "50 min", image: "./assets/images/prices/bikini.jpg",        desc: "Luxe behandeling vanhoofdhuid en haar metmassage, reiniging enontspanning." },
-    { id: 3,  title: "Kleine Deelbehandeling",             category: "Medische Pedicure",     price: "€25",  duration: "60 min", image: "./assets/images/prices/bikini2.jpg",    desc: "Gericht op één probleem,zoals eelt, likdoorn ofingegroeide nagel." },
-    { id: 4,  title: "Plasma lift (huidverstrakking)",          category: "Speciale Behandelingen",       price: "vanaf €150",  duration: "45 min", image: "./assets/images/prices/eyebrow.jpg",       desc: "Behandeling met plasmaflits voor huidverjonging en rimpelvermindering.<br><br><ul><li>Oogleden boven of onder: €250</li><li>Oogleden boven & onder samen: €450</li><li>Andere zones (lip, wangen, hals etc.): €150 – €400</li></ul>" },
-    { id: 5,  title: "Risicovoet behandeling",   category: "Medische Pedicure",      price: "€60",  duration: "60 min", image: "./assets/images/prices/eyebrow2.jpg",      desc: "Speciale zorg en screening bijmedische indicatie." },
-    { id: 6,  title: "Kleine Zones",           category: "Ontharing",      price: "€15",  duration: "60 min", image: "./assets/images/prices/facecloseup.jpg",        desc: "Opties; wenkbrauwen,bovenlip, kin, oksels)" },
-    { id: 7,  title: "Basis Schoonheidsbehandeling",      category: "Schoonheidsbehandelingen",      price: "€55",  duration: "50 min", image: "./assets/images/prices/facemassage.jpg",        desc: "Eenvoudigegezichtsbehandeling metreiniging en verzorging." },
-    { id: 8,  title: "Sportmassage",               category: "Massage",      price: "€70/uur",  duration: "45 min", image: "./assets/images/prices/feet.jpg",         desc: "Actieve massage om spierenlos te maken, herstel tebevorderen en blessures tevoorkomen." },
-    { id: 9,  title: "Orthese",       category: "Medische Pedicure",    price: "€50",  duration: "50 min", image: "./assets/images/prices/leafeye.jpg",     desc: "Siliconen hulpmiddel omdrukplekken te verlichten" },
-    { id: 10, title: "Middelgrote Zones",          category: "Ontharing",    price: "€70",  duration: "45 min", image: "./assets/images/prices/leafface.jpg",        desc: "Opties; armen, bikinilijn,borstkas, rug" },
-    { id: 11, title: "Voetmassage",     category: "Medische Pedicure",        price: "€45/30min",  duration: "25 min", image: "./assets/images/prices/leaffeet.jpg",       desc: "Ontspannende massage vanvoeten en onderbenen." },
-    { id: 12, title: "Drenagem linfática",        category: "Massage",      price: "€85/uur",  duration: "45 min", image: "./assets/images/prices/legs.jpg",         desc: "Zachte massage die hetlymfestelsel stimuleert enhelpt bij vochtophoping endetox." },
-    { id: 13, title: "Ingegroeide Nagel",            category: "Medische Pedicure",        price: "€55",  duration: "45 min", image: "./assets/images/prices/rosesinpants.jpg",          desc: "Verlichting van pijn encorrectie met eventuelenagelbeugel." },
-    { id: 14, title: "PMU Wenkbrauwen",        category: "Permanente Make-up",        price: "€350",  duration: "40 min", image: "./assets/images/prices/selfhug.jpg",      desc: "Hairstrokes, perfect gevormdewenkbrauwen." },
-    { id: 15, title: "Nagelbeugel Plaatsen",     category: "Medische Pedicure",      price: "€55 p.st.",  duration: "60 min", image: "./assets/images/prices/shoulderleaf.jpg",    desc: "Corrigeert groei van de nagelen vermindert druk." },
-    { id: 16, title: "Bindweefsel massage",          category: "Massage",      price: "€90/uur",  duration: "55 min", image: "./assets/images/prices/stonemassage.jpg",        desc: " Stimulerende massage gerichtop huidverbetering envermindering van cellulite,met cupping." },
-    { id: 17, title: "Retouche / bijwerken PMU",      category: "Permanente Make-up",      price: "€150",  duration: "35 min", image: "./assets/images/prices/stonemassage2.jpg",            desc: "Opfrisbehandeling na enkelemaanden of jaren." },
-    { id: 18, title: "Volledige Pedicure",      category: "Medische Pedicure",      price: "€55/uur",  duration: "25 min", image: "./assets/images/prices/stonemassage3.jpg",          desc: "Knippen, verzorgen vannagels, verwijderen van eelt enlikdoorns, behandeling kloven." },
-    { id: 19, title: "Huidreiniging (facial)",       category: "Schoonheidsbehandelingen",     price: "€85/uur",  duration: "55 min", image: "./assets/images/prices/waterfeet.jpg",         desc: "Dieptereiniging met stomen,peeling en masker voor eenfrisse huid." },
-    { id: 20, title: "Nagelreparatie",        category: "Medische Pedicure",     price: "€35 per nagel",  duration: "60 min", image: "./assets/images/prices/waterfeet2.jpg",      desc: "Herstel of opbouw van eenbeschadigde of afgebrokennagel." },
-    { id: 21, title: "Grote Zones",        category: "Ontharing",     price: "€300",  duration: "60 min", image: "./assets/images/prices/waterfeet2.jpg",      desc: "Opties; hele benen, Brazilian, volledig lichaam" },
-    { id: 22, title: "Steenmassage",        category: "Massage",     price: "€35/30min",  duration: "60 min", image: "./assets/images/prices/waterfeet2.jpg",      desc: "Ontspannende behandelingmet verwarmde stenen diespieren diep verwarmen." },
-  ];
-  // js/prices.js
+  { id: 1, title: "Ontspanningsmassage", category: "Massage", price: "€75/uur", duration: "45 min", image: "./assets/images/prices/backmassage.jpg", desc: "Heerlijk ontspannen of juistklachtgericht. Keuze uit rug, nek, schouders of full body." },
+  { id: 2, title: "Head Spa", category: "Speciale Behandelingen", price: "€80/uur", duration: "50 min", image: "./assets/images/prices/bikini.jpg", desc: "Luxe behandeling vanhoofdhuid en haar metmassage, reiniging enontspanning." },
+  { id: 3, title: "Kleine Deelbehandeling", category: "Medische Pedicure", price: "€25", duration: "60 min", image: "./assets/images/prices/bikini2.jpg", desc: "Gericht op één probleem,zoals eelt, likdoorn ofingegroeide nagel." },
+  { id: 4, title: "Plasma lift (huidverstrakking)", category: "Speciale Behandelingen", price: "vanaf €150", duration: "45 min", image: "./assets/images/prices/eyebrow.jpg", desc: "Behandeling met plasmaflits voor huidverjonging en rimpelvermindering.<br><br><ul><li>Oogleden boven of onder: €250</li><li>Oogleden boven & onder samen: €450</li><li>Andere zones (lip, wangen, hals etc.): €150 – €400</li></ul>" },
+  { id: 5, title: "Risicovoet behandeling", category: "Medische Pedicure", price: "€60", duration: "60 min", image: "./assets/images/prices/eyebrow2.jpg", desc: "Speciale zorg en screening bijmedische indicatie." },
+  { id: 6, title: "Kleine Zones", category: "Ontharing", price: "€15", duration: "60 min", image: "./assets/images/prices/facecloseup.jpg", desc: "Opties; wenkbrauwen,bovenlip, kin, oksels)" },
+  { id: 7, title: "Basis Schoonheidsbehandeling", category: "Schoonheidsbehandelingen", price: "€55", duration: "50 min", image: "./assets/images/prices/facemassage.jpg", desc: "Eenvoudigegezichtsbehandeling metreiniging en verzorging." },
+  { id: 8, title: "Sportmassage", category: "Massage", price: "€70/uur", duration: "45 min", image: "./assets/images/prices/feet.jpg", desc: "Actieve massage om spierenlos te maken, herstel tebevorderen en blessures tevoorkomen." },
+  { id: 9, title: "Orthese", category: "Medische Pedicure", price: "€50", duration: "50 min", image: "./assets/images/prices/leafeye.jpg", desc: "Siliconen hulpmiddel omdrukplekken te verlichten" },
+  { id: 10, title: "Middelgrote Zones", category: "Ontharing", price: "€70", duration: "45 min", image: "./assets/images/prices/leafface.jpg", desc: "Opties; armen, bikinilijn,borstkas, rug" },
+  { id: 11, title: "Voetmassage", category: "Medische Pedicure", price: "€45/30min", duration: "25 min", image: "./assets/images/prices/leaffeet.jpg", desc: "Ontspannende massage vanvoeten en onderbenen." },
+  { id: 12, title: "Drenagem linfática", category: "Massage", price: "€85/uur", duration: "45 min", image: "./assets/images/prices/legs.jpg", desc: "Zachte massage die hetlymfestelsel stimuleert enhelpt bij vochtophoping endetox." },
+  { id: 13, title: "Ingegroeide Nagel", category: "Medische Pedicure", price: "€55", duration: "45 min", image: "./assets/images/prices/rosesinpants.jpg", desc: "Verlichting van pijn encorrectie met eventuelenagelbeugel." },
+  { id: 14, title: "PMU Wenkbrauwen", category: "Permanente Make-up", price: "€350", duration: "40 min", image: "./assets/images/prices/selfhug.jpg", desc: "Hairstrokes, perfect gevormdewenkbrauwen." },
+  { id: 15, title: "Nagelbeugel Plaatsen", category: "Medische Pedicure", price: "€55 p.st.", duration: "60 min", image: "./assets/images/prices/shoulderleaf.jpg", desc: "Corrigeert groei van de nagelen vermindert druk." },
+  { id: 16, title: "Bindweefsel massage", category: "Massage", price: "€90/uur", duration: "55 min", image: "./assets/images/prices/stonemassage.jpg", desc: " Stimulerende massage gerichtop huidverbetering envermindering van cellulite,met cupping." },
+  { id: 17, title: "Retouche / bijwerken PMU", category: "Permanente Make-up", price: "€150", duration: "35 min", image: "./assets/images/prices/stonemassage2.jpg", desc: "Opfrisbehandeling na enkelemaanden of jaren." },
+  { id: 18, title: "Volledige Pedicure", category: "Medische Pedicure", price: "€55/uur", duration: "25 min", image: "./assets/images/prices/stonemassage3.jpg", desc: "Knippen, verzorgen vannagels, verwijderen van eelt enlikdoorns, behandeling kloven." },
+  { id: 19, title: "Huidreiniging (facial)", category: "Schoonheidsbehandelingen", price: "€85/uur", duration: "55 min", image: "./assets/images/prices/waterfeet.jpg", desc: "Dieptereiniging met stomen,peeling en masker voor eenfrisse huid." },
+  { id: 20, title: "Nagelreparatie", category: "Medische Pedicure", price: "€35 per nagel", duration: "60 min", image: "./assets/images/prices/waterfeet2.jpg", desc: "Herstel of opbouw van eenbeschadigde of afgebrokennagel." },
+  { id: 21, title: "Grote Zones", category: "Ontharing", price: "€300", duration: "60 min", image: "./assets/images/prices/waterfeet2.jpg", desc: "Opties; hele benen, Brazilian, volledig lichaam" },
+  { id: 22, title: "Steenmassage", category: "Massage", price: "€35/30min", duration: "60 min", image: "./assets/images/prices/waterfeet2.jpg", desc: "Ontspannende behandelingmet verwarmde stenen diespieren diep verwarmen." },
+];
+// js/prices.js
 
 // ====== Masonry + Modal Elementen ======
 const masonry = document.getElementById("masonry");
-const modal   = document.getElementById("price-modal");
+const modal = document.getElementById("price-modal");
 
 const modalEls = {
-  image:    document.getElementById("modal-image"),
-  title:    document.getElementById("modal-title"),
-  desc:     document.getElementById("modal-desc"),
+  image: document.getElementById("modal-image"),
+  title: document.getElementById("modal-title"),
+  desc: document.getElementById("modal-desc"),
   category: document.getElementById("modal-category"),
-  price:    document.getElementById("modal-price"),
+  price: document.getElementById("modal-price"),
   duration: document.getElementById("modal-duration"),
 };
 
@@ -125,4 +125,3 @@ function wireUp(data) {
 renderCards(data);
 wireUp(data);
 
-  

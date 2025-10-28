@@ -19,13 +19,28 @@
 </head>
 
 <body class="static-header-always">
+  <div id="page-background"></div> <!-- 🔁 NIEUW TOEGEVOEGD -->
   <!-- Hero / pagina-titel -->
-  <div id="hero-section">
-    <h1>Prijslijst</h1>
+  <div id="hero-section" class="price-hero">
+    <div class="hero-content">
+      <h1>Prijslijst</h1>
+      <p class="subtitle">
+        Ontdek al onze behandelingen en tarieven — zorgvuldig uitgevoerd met passie en professionaliteit.
+      </p>
+      <div class="hero-buttons">
+        <a href="#prijzen" class="btn btn--primary">Bekijk tarieven</a>
+        <a href="/contact.html" class="btn btn--outline">Maak een afspraak</a>
+      </div>
+    </div>
+  
+    <!-- Scroll hint -->
+    <button class="scroll-down" onclick="document.querySelector('#prijzen')?.scrollIntoView({behavior:'smooth'})" aria-label="Scroll naar prijzen">
+      ▼
+    </button>
   </div>
 
   <!-- Prices Section -->
-  <main class="prices-page">
+  <main class="prices-page" id="prijzen">
     <!-- Toolbar (filters/search optioneel) -->
     <div class="prices-toolbar"></div>
 
@@ -64,6 +79,13 @@
             <i class="fa-regular fa-clock" aria-hidden="true"></i>
             <span id="modal-duration" class="duration"></span>
           </div>
+        </div>
+
+        <div class="price-modal__row" style="margin-top: 0 !important; border-top: 0 !important;">
+          <p class="payment-note-modal">
+            <i class="fa-solid fa-circle-info"></i>
+            50% vooruitbetaling vereist
+          </p>
         </div>
       </div>
     </div>

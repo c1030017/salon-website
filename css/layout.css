@@ -1,29 +1,103 @@
-#hero-section {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
 
-/* Variant van hero-section zonder animatie voor andere pagina's */
-#hero-section:not(.home) {
-  background: linear-gradient(45deg, rgba(0, 204, 255, 0.233), rgba(255, 204, 0, 0.184), rgba(0, 255, 149, 0.304));
-  background-size: 400% 400%;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-}
-
+/* =========================
+   Hero
+   ========================= */
+   #hero-section {
+    position: relative;
+    top: 0;
+    left: 0;
+    /* z-index: -1;  <-- kan verspring-issues geven; liever weghalen */
+    height: 100vh;  
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  /* Variant van hero-section zonder animatie voor andere pagina's */
+  #hero-section {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    color: #1a1a1a;
+    animation: softGradient 12s ease infinite;
+    overflow: hidden;
+  }
+  
+  @keyframes softGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Hero content */
+  .hero-content {
+    max-width: 720px;
+    padding: 0 1rem;
+  }
+  
+  .hero-content h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  
+  .subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    opacity: 0.75;
+    margin-bottom: 2rem;
+  }
+  
+  /* Buttons */
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform .15s ease, filter .2s ease;
+    border: 2px solid transparent;
+  }
+  .btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+  .btn--primary { background: rgb(25,135,84); color: #fff; }
+  .btn--outline { border-color: rgb(25,135,84); color: rgb(25,135,84); background: transparent; }
+  .btn--ghost   { border-color: rgba(25,135,84,.25); color: #0f1a15; background: rgba(255,255,255,.5); }
+  
+  /* Scroll hint */
+  .scroll-down {
+    position: absolute;
+    bottom: 70px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    opacity: 0.5;
+    cursor: pointer;
+    animation: bounce 2s infinite ease-in-out;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+  
+  /* Animatie voor de bewegende achtergrond */
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
 /* Animatie voor de bewegende achtergrond */
 @keyframes gradientMove {

@@ -20,55 +20,72 @@
 
 <body class="static-header-always">
 
-  <!-- Contact Sectie -->
-  <main class="contact-page">
-    <section class="contact-card">
+  <div id="page-background"></div> <!-- 🔁 NIEUW TOEGEVOEGD -->
+    <!-- Hero boven de kaart -->
+    <div id="hero-section" class="price-hero">
+      <div class="hero-content">
+        <h1>Contact</h1>
+        <p class="subtitle">Vragen of een afspraak plannen? We reageren meestal binnen 24 uur.
+          Bellen kan sneller.
+        </p>
+        <div class="hero-buttons">
+          <a href="tel:+31640831066" class="btn btn--primary">Bel direct</a>
+          <a href="#form" class="btn btn--outline">Vul formulier in</a>
+        </div>
+      </div>
+    
+      <!-- Scroll hint -->
+      <button class="scroll-down" onclick="document.querySelector('#prijzen')?.scrollIntoView({behavior:'smooth'})" aria-label="Scroll naar prijzen">
+        ▼
+      </button>
+    </div>
+  
+    <!-- JOUW BESTAANDE SECTIE: ongewijzigd -->
+    <section class="contact-card" id="form">
       <div class="contact-left">
         <h2>Neem contact op</h2>
         <p>
           Heb je een vraag? Stuur ons gerust een bericht en we reageren zo snel mogelijk.<br>
           <strong>Let op:</strong> afspraken kunnen uitsluitend telefonisch worden gemaakt.<br>
-          Daarnaast vragen wij <strong>50% vooruitbetaling</strong> bij het maken van de afspraak 
+          Daarnaast vragen wij <strong>50% vooruitbetaling</strong> bij het maken van de afspraak
           en <strong>50% op de dag van de behandeling</strong>.
         </p>
-
+  
         <ul class="contact-info">
           <li><i class="fa-solid fa-location-dot"></i> Rubensplein 11c, 3117 BJ Schiedam</li>
           <li><i class="fa-solid fa-phone"></i> +31 (6) 40 83 10 66</li>
           <li><i class="fa-solid fa-envelope"></i> Cvbeautybrasil@hotmail.com</li>
         </ul>
-
+  
         <div class="contact-socials">
-          <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" class="icon-btn"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/"  target="_blank" aria-label="Facebook"  class="icon-btn"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://wa.me/"              target="_blank" aria-label="WhatsApp" class="icon-btn"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/cvbeautybrasil?igsh=bjM0aGszZHNvcHhp" target="_blank" aria-label="Instagram" class="icon-btn"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/17QaGVkJwR/"  target="_blank" aria-label="Facebook"  class="icon-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.tiktok.com/@cv_beautybrasil?_t=ZG-90nonJ9pmts&_r=1"  target="_blank" aria-label="TikTok" class="icon-btn"><i class="fab fa-tiktok"></i></a>
         </div>
       </div>
-
+  
       <div class="contact-right">
-        <!-- LET OP: geen action/method nodig met EmailJS -->
         <form id="contact-form" class="form" novalidate>
-          <!-- Honeypot tegen spam -->
           <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" style="display:none">
-
+  
           <div class="field">
             <label for="name">Naam</label>
             <input type="text" id="name" name="name" placeholder="Jouw naam" required>
             <small class="error" data-for="name"></small>
           </div>
-
+  
           <div class="field">
             <label for="email">E-mailadres</label>
             <input type="email" id="email" name="email" placeholder="jij@voorbeeld.nl" required>
             <small class="error" data-for="email"></small>
           </div>
-
+  
           <div class="field">
             <label for="message">Bericht</label>
             <textarea id="message" name="message" rows="6" placeholder="Schrijf hier je bericht..." required></textarea>
             <small class="error" data-for="message"></small>
           </div>
-
+  
           <div class="consent">
             <label>
               <input type="checkbox" id="consent" required>
@@ -76,19 +93,22 @@
             </label>
             <small class="error" data-for="consent"></small>
           </div>
-
+  
           <button type="submit" class="btn-submit">
             <i class="fa-regular fa-paper-plane"></i> Verzenden
           </button>
-
-          <p class="form-note">Lievere mailen? <a href="mailto:Cvbeautybrasil@hotmail.com">Cvbeautybrasil@hotmail.com</a></p>
-
-          <!-- Feedback -->
+  
+          <p class="form-note">Lievere mailen?
+            <a href="mailto:Cvbeautybrasil@hotmail.com">Cvbeautybrasil@hotmail.com</a>
+          </p>
+  
           <div id="form-status" class="form-status" aria-live="polite"></div>
         </form>
       </div>
     </section>
-  </main>
+  
+    <!-- (optioneel) route/kaart sectie met id voor de Route-knop -->
+    <section id="kaart" style="height:1px;"></section>
 
   <!-- Footer include -->
   <div w3-include-html="sections/footer.html"></div>
