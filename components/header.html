@@ -8,7 +8,7 @@
   </div>
 </div>
 
-<!-- Slideout Menu (zonder herhaling van menu bovenin) -->
+<!-- Slideout Menu -->
 <div id="slideout-menu">
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -23,4 +23,21 @@
     <img id="cv-logo-static" class="static-logo cv" src="assets/images/logo-cv.png" alt="CV Logo" />
     <img id="salon-logo-static" class="static-logo salon" src="assets/images/logo-salon.png" alt="Salon Logo" />
   </div>
-</div>  
+</div>
+
+<script>
+  const menuIcon = document.getElementById('menu-icon');
+  const slideout = document.getElementById('slideout-menu');
+
+  // Toggle bij klik op menu
+  menuIcon.addEventListener('click', () => {
+    slideout.classList.toggle('open');
+  });
+
+  // Sluit bij klik buiten menu
+  document.addEventListener('click', (e) => {
+    if (!slideout.contains(e.target) && !menuIcon.contains(e.target)) {
+      slideout.classList.remove('open');
+    }
+  });
+</script>

@@ -238,7 +238,7 @@ body {
 .price-modal__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .price-modal__dialog {
@@ -272,7 +272,7 @@ body {
 
 .price-modal__content img {
   width: 100%;
-  height: 100%;
+  height: 500px;
   object-fit: cover;
 }
 
@@ -419,6 +419,14 @@ body {
   }
 
   /* wordt via parent padding al gemarged */
+}
+
+@media (max-width: 768px){
+  .price-modal__content img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+  }
 }
 
 

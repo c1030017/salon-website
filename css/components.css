@@ -32,7 +32,7 @@
 #slideout-menu {
   position: fixed;
   top: 0;
-  right: -300px;
+  right: -300px; /* standaard verborgen */
   width: 130px;
   height: 38vh;
   background-color: rgba(84, 131, 91, 0.664);
@@ -45,9 +45,14 @@
   padding: 40px 0;
 }
 
-/* Laat menu zien op hover van icon of blok */
+/* Laat menu zien bij hover (desktop) */
 #menu-icon:hover + #slideout-menu,
 #slideout-menu:hover {
+  right: 0;
+}
+
+/* Laat menu zien bij klik (mobiel) */
+#slideout-menu.open {
   right: 0;
 }
 
