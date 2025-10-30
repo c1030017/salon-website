@@ -3,25 +3,25 @@ import { startLogoAnimations } from './animations/logos.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   fetch('components/header.html')
-    .then(res => res.text())
-    .then(data => {
-      document.body.insertAdjacentHTML('afterbegin', data);
-    })
-    .then(() => {
-  import('./menu.js').then(module => {
-    module.markActivePage(); // <-- we roepen straks een functie aan uit menu.js
-  });
-});
+  .then(res => res.text())
+  .then(html => {
+    document.body.insertAdjacentHTML('afterbegin', html);
+  })
+  .then(() => import('./sitemenu.js'))
+  .then(module => {
+    module.initMenu(); // activeer het menu
+  })
+  .catch(err => console.error('Menu laden mislukt:', err));
 
 
   // Animaties starten zoals je al had
-if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
-  startFlowerAnimation();
+  if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
+    startFlowerAnimation();
 
-  setTimeout(() => {
-    startLogoAnimations();
-  }, 4000);
-}
+    setTimeout(() => {
+      startLogoAnimations();
+    }, 4000);
+  }
 
 });
 

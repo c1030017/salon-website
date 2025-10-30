@@ -14,6 +14,15 @@ body {
   padding: 0;
 }
 
+body.menu-open {
+  overflow: hidden;      /* verbergt scrollbar */
+  scrollbar-width: none; /* verbergt Firefox scrollbar */
+}
+
+body.menu-open::-webkit-scrollbar {
+  display: none;         /* verbergt Chrome/Safari scrollbar */
+}
+
 /* =========================
    Hero images (bloem + logos)
    ========================= */

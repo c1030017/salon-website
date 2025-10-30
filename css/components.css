@@ -1,93 +1,4 @@
-/* ========================= */
-/*        HEADER & MENU      */
-/* ========================= */
-
-/* MENU ICON rechtsboven */
-#menu-icon {
-  position: fixed;
-  top: 35px;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  z-index: 1000;
-  color: #760101; 
-  font-size: 22px;
-  background: transparent;
-  padding: 0;
-  border: none;
-}
-
-/* Hamburger strepen */
-#menu-icon .bars div {
-  width: 25px;
-  height: 3px;
-  background: #004d26;
-  margin: 3px 0;
-  border-radius: 2px;
-}
-
-/* UITKLAP MENU */
-#slideout-menu {
-  position: fixed;
-  top: 0;
-  right: -300px; /* standaard verborgen */
-  width: 130px;
-  height: 38vh;
-  background-color: rgba(84, 131, 91, 0.664);
-  box-shadow: -4px 0 10px rgba(158, 22, 22, 0.3);
-  transition: right 0.4s ease;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  border-radius: 20px 0 0 20px; /* Alleen linkerzijde afronden */
-  padding: 40px 0;
-}
-
-/* Laat menu zien bij hover (desktop) */
-#menu-icon:hover + #slideout-menu,
-#slideout-menu:hover {
-  right: 0;
-}
-
-/* Laat menu zien bij klik (mobiel) */
-#slideout-menu.open {
-  right: 0;
-}
-
-/* MENU ITEMS */
-#slideout-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 50px 0 0 0; /* extra ruimte boven de lijst */
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-#slideout-menu li a {
-  display: block;
-  width: 100%;
-  text-decoration: none;
-  font-size: 20px;
-  color: rgb(255, 255, 255);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  padding: 12px 0;
-  text-align: center;
-}
-
-#slideout-menu li a:hover {
-  color: #c84040;
-  font-weight: bold;
-}
-
-#slideout-menu li a.active {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: rgb(225, 35, 35);
-  font-weight: bold;
-}
-/* =========================
+  /* =========================
    Footer (linker kolom + rechter kaart)
    ========================= */
    #footer {
@@ -258,7 +169,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9998;
+  z-index: 100;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-16px);
