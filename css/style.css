@@ -124,6 +124,10 @@ body.menu-open::-webkit-scrollbar {
   transition: background-color 0.3s ease;
 }
 
+.visible {
+  opacity: 1 !important;
+}
+
 #logo-area img { height: 40px; }
 
 /* =========================

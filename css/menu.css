@@ -106,6 +106,3 @@ body.menu-open { overflow: hidden; }
   text-align: center;
 }
 .menu-close:hover { opacity: 0.8; }
-
-/* Zorg dat eventuele headerbar NIET boven het menu komt */
-.static-header { z-index: 500; }

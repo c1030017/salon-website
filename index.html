@@ -51,7 +51,19 @@
   });
 </script>
 
-<script src="js/scroll.js"></script>
+<script>
+  w3.includeHTML(() => {
+    const yearSpan = document.getElementById("current-year");
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // 🔁 verplaats scroll-init HIERNA:
+    const script = document.createElement("script");
+    script.src = "js/scroll.js";
+    document.body.appendChild(script);
+  });
+</script>
 <script type="module" src="js/main.js"></script>
 
 </body>

@@ -1,36 +1,39 @@
   /* =========================
    Footer (linker kolom + rechter kaart)
    ========================= */
-   #footer {
+  #footer {
     background-color: rgba(84, 131, 91, 0.664);
     color: #fff;
     padding: 28px min(5vw, 32px) 20px;
     font-family: 'Poppins', sans-serif;
     position: relative;
   }
-  
+
   .footer-container {
     max-width: 1200px;
     margin: 0 151px;
   }
-  
+
   /* Twee-koloms layout: links (stack) + rechts (map) */
   .footer-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* kaart iets groter */
+    grid-template-columns: 1fr 1fr;
+    /* kaart iets groter */
     gap: 24px;
     align-items: start;
   }
-  
+
   /* Linker kolom stapelt Pagina’s en Socials */
   .footer-left {
     display: grid;
     justify-content: center;
     gap: 29px;
   }
-  
-  .footer-col { min-width: 0; }
-  
+
+  .footer-col {
+    min-width: 0;
+  }
+
   .footer-title {
     font-size: 1rem;
     letter-spacing: 0.4px;
@@ -38,12 +41,13 @@
     margin: 4px 0 12px;
     opacity: 0.95;
   }
-  
+
   /* Links met iconen */
   .footer-links {
     display: grid;
     gap: 10px;
   }
+
   .footer-links a {
     display: inline-flex;
     align-items: center;
@@ -53,49 +57,59 @@
     opacity: 0.9;
     transition: opacity 0.25s ease, transform 0.2s ease;
   }
+
   .footer-links a i {
     width: 20px;
     text-align: center;
     font-size: 18px;
   }
+
   .footer-links a:hover {
     opacity: 1;
     transform: translateX(2px);
   }
-  
+
   /* Social icon buttons */
   .footer-socials-row {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
   }
+
   .icon-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 38px; height: 38px;
+    width: 38px;
+    height: 38px;
     border-radius: 10px;
-    background: rgba(255,255,255,0.18);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
     color: #fff;
     text-decoration: none;
     transition: transform 0.2s ease, background 0.25s ease, box-shadow 0.25s ease;
   }
-  .icon-btn i { font-size: 18px; line-height: 1; }
+
+  .icon-btn i {
+    font-size: 18px;
+    line-height: 1;
+  }
+
   .icon-btn:hover {
     transform: translateY(-2px);
-    background: rgba(255,255,255,0.28);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+    background: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
   }
-  
+
   /* Kaart met ronde hoeken zoals menu (20px) */
   .footer-map .map-wrap {
     width: 100%;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
-    background: rgba(255,255,255,0.1);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+    background: rgba(255, 255, 255, 0.1);
   }
+
   .footer-map iframe {
     display: block;
     width: 100%;
@@ -103,7 +117,7 @@
     border: 0;
   }
 
-  .footer-address { 
+  .footer-address {
     width: 100%;
     margin-top: 10px;
     line-height: 1.4;
@@ -111,7 +125,7 @@
     opacity: 0.9;
   }
 
-  .footer-right{
+  .footer-right {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -120,125 +134,162 @@
   .fab-footer {
     color: white;
   }
-  
+
   /* Onderzijde */
   .footer-bottom {
     text-align: center;
     margin-top: 18px;
   }
+
   .footer-copy {
     font-size: 13px;
     opacity: 0.75;
   }
-  
+
   /* Responsief: stack op smal scherm */
   @media (max-width: 900px) {
-    .footer-layout { grid-template-columns: 1fr; }
-    .footer-left   { order: 1; }
-    .footer-right  { order: 2; }
-    .footer-map iframe { height: 220px; }
-  }
-  
-
-/* Mobiel responsief */
-@media (max-width: 768px) {
-  .footer-header {
-    flex-direction: column;
-  }
-    .footer-left {
-      grid-template-columns: 1fr 1fr; /* 1 kolom = alles onder elkaar */
+    .footer-layout {
+      grid-template-columns: 1fr;
     }
 
-  .footer-links {
-    flex-direction: column;
-    gap: 12px;
+    .footer-left {
+      order: 1;
+    }
+
+    .footer-right {
+      order: 2;
+    }
+
+    .footer-map iframe {
+      height: 220px;
+    }
   }
 
-  .footer-socials {
-    position: static;
-    justify-content: center;
-    margin-top: 20px;
+
+  /* Mobiel responsief */
+  @media (max-width: 768px) {
+    .footer-header {
+      flex-direction: column;
+    }
+
+    .footer-left {
+      grid-template-columns: 1fr 1fr;
+      /* 1 kolom = alles onder elkaar */
+    }
+
+    .footer-links {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-socials {
+      position: static;
+      justify-content: center;
+      margin-top: 20px;
+    }
   }
-}
-/* ========================= */
-/* LOGO STATIC POSITIONING   */
-/* ========================= */
 
-/* De fixed header die we tonen/verbergen met fade */
-.static-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-16px);
-  pointer-events: none; /* wordt auto ingeschakeld bij .visible */
-  transition:
-    opacity 420ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 420ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 0ms linear 420ms;
-}
+  /* ========================= */
+  /* LOGO STATIC POSITIONING   */
+  /* ========================= */
 
-.static-header.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-  transition:
-    opacity 420ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 420ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 0ms linear 0ms;
-}
-
-/* De groep die de posities van de twee logo’s bevat */
-.static-header .logo-group.logo-small {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0;   /* zoals je eerdere implementatie */
-  height: 0;  /* zodat absolute posities vanaf hoek werken */
-  z-index: 9999;
-  pointer-events: none; /* klik events op de header zelf, niet op de "nul-lagen" */
-}
-
-/* Header-logo’s (NIET de hero) */
-.static-header .static-logo {
-  position: absolute;
-  transform-origin: top left;
-  transition: transform 350ms ease, opacity 260ms ease;
-}
-
-.static-header .static-logo.cv {
-  top: 3px;
-  left: 0px;
-  transform: scale(0.22);
-}
-
-.static-header .static-logo.salon {
-  top: -20.5px;
-  left: 53px;
-  transform: scale(0.1825);
-}
-
-/* Responsive scaling voor header-logo's */
-@media (max-width: 1024px) {
-  .static-header .static-logo.cv { transform: scale(0.18); top: 2px; left: 0px; }
-  .static-header .static-logo.salon { transform: scale(0.15); top: -18px; left: 44px; }
-}
-
-@media (max-width: 600px) {
-  .static-header .static-logo.cv { transform: scale(0.14); top: 12px; left: 0px; }
-  .static-header .static-logo.salon { transform: scale(0.11); top: 2px; left: 35px; }
-
-  .footer-container{
-    margin: 0;
+  .static-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-16px);
+    pointer-events: none;
+    transition:
+      opacity 420ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform 420ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0ms linear 420ms;
+    will-change: opacity, transform;
   }
-}
 
-/* Hero verberg-helper wanneer header zichtbaar is */
-.animated-hidden {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: opacity 260ms ease !important;
-}
+  .static-header.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition:
+      opacity 420ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform 420ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0ms linear 0ms;
+  }
+
+  /* anker voor absolute logo's */
+  .static-header .logo-group.logo-small {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    /* ok: we positioneren via absolute children */
+    pointer-events: none;
+  }
+
+  /* logo's */
+  .static-header .static-logo {
+    position: absolute;
+    display: block;
+    /* voorkomt rare inline-gaps */
+    transform-origin: top left;
+    transition: transform .35s ease, opacity .26s ease;
+  }
+
+  .static-header .static-logo.cv {
+    top: 3px;
+    left: 0px;
+    transform: scale(0.22);
+  }
+
+  .static-header .static-logo.salon {
+    top: -20.5px;
+    left: 53px;
+    transform: scale(0.1825);
+  }
+
+  /* responsive tweaks */
+  @media (max-width: 1024px) {
+    .static-header .static-logo.cv {
+      transform: scale(0.18);
+      top: 2px;
+      left: 0;
+    }
+
+    .static-header .static-logo.salon {
+      transform: scale(0.15);
+      top: -18px;
+      left: 44px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .static-header .static-logo.cv {
+      transform: scale(0.14);
+      top: 12px;
+      left: 0;
+    }
+
+    .static-header .static-logo.salon {
+      transform: scale(0.11);
+      top: 2px;
+      left: 35px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    .static-header .static-logo.salon {
+      display: none;
+    }
+  }
+
+  /* Hero verberg-helper wanneer header zichtbaar is */
+  .animated-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 260ms ease !important;
+  }
